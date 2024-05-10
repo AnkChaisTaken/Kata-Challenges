@@ -29,5 +29,35 @@ namespace KataChallenges
 
             return Array.Empty<int>();
         }
+
+        // 1. hepsini al ve sağdan ve soldan çıkar
+        // 2. soldan başla ve yavaşça ilerle
+
+        public static int[] FindCoolContiguousElementsSumTo(int[] numbers, int k)
+        {
+            int startIndex = 0;
+            int startNum = numbers[0];
+
+            int sum = 0;
+
+            for (int endIndex = 0; endIndex < numbers.Length; endIndex++)
+            {
+                int endNum = numbers[endIndex];
+                sum += endNum;
+                
+                while (sum > k)
+                {
+                    sum -= startNum;
+
+                    startIndex++;
+                    startNum = numbers[startIndex];
+                }
+
+                if (sum == k)
+                    return numbers.Skip(startIndex).Take(endIndex + 1 - startIndex).ToArray();
+            }
+
+            return Array.Empty<int>();
+        }
     }
 }
