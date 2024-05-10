@@ -7,7 +7,8 @@ namespace KataChallenges
     {
         static void Main(string[] args)
         {
-
+            Console.WriteLine(RunLength.Encode("AAAABBBCCDAA"));
+            Console.WriteLine(string.Join(',', SubarraySum.FindContiguousElementsSumTo(new[] { 1, 2, 3, 4, 5 }, 9)));
         }
     }
 }
